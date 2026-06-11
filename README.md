@@ -21,30 +21,30 @@ Each challenge is a door. You have the skills to open them all.
 CTF_Challenges/
 ├── linux/
 │   ├── easy/
-│   │   ├── challenge1_suid/
-│   │   ├── challenge2_sudo/
-│   │   └── challenge3_cron/
+│   │   ├── candyland_gate/
+│   │   ├── the_house/
+│   │   └── stephens_log/
 │   ├── medium/
-│   │   ├── challenge1_capabilities/
-│   │   ├── challenge2_path_hijack/
-│   │   └── challenge3_ld_preload/
+│   │   ├── the_cellar/
+│   │   ├── the_stables/
+│   │   └── schultz_library/
 │   └── hard/
-│       ├── challenge1_wildcard_injection/
-│       ├── challenge2_docker_escape/
-│       └── challenge3_rbash_escape/
+│       ├── the_archive/
+│       ├── the_cage/
+│       └── the_chains/
 └── windows/
     ├── easy/
-    │   ├── challenge1_unquoted_path/
-    │   ├── challenge2_always_install_elevated/
-    │   └── challenge3_weak_service_perms/
+    │   ├── front_porch/
+    │   ├── the_parlor/
+    │   └── servants_quarters/
     ├── medium/
-    │   ├── challenge1_dll_hijack/
-    │   ├── challenge2_scheduled_task/
-    │   └── challenge3_registry_autorun/
+    │   ├── the_workshop/
+    │   ├── the_clocktower/
+    │   └── candyland_records/
     └── hard/
-        ├── challenge1_seimpersonate/
-        ├── challenge2_sam_dump/
-        └── challenge3_pass_the_hash/
+        ├── the_impersonator/
+        ├── the_vault/
+        └── stephens_shadow/
 ```
 
 ---
@@ -84,12 +84,12 @@ CTF{...}
 
 | # | Platform | Challenge |
 |---|----------|-----------|
-| 1 | Linux | [challenge1_suid](linux/easy/challenge1_suid/) |
-| 2 | Linux | [challenge2_sudo](linux/easy/challenge2_sudo/) |
-| 3 | Linux | [challenge3_cron](linux/easy/challenge3_cron/) |
-| 4 | Windows | [challenge1_unquoted_path](windows/easy/challenge1_unquoted_path/) |
-| 5 | Windows | [challenge2_always_install_elevated](windows/easy/challenge2_always_install_elevated/) |
-| 6 | Windows | [challenge3_weak_service_perms](windows/easy/challenge3_weak_service_perms/) |
+| 1 | Linux | [candyland_gate](linux/easy/candyland_gate/) |
+| 2 | Linux | [the_house](linux/easy/the_house/) |
+| 3 | Linux | [stephens_log](linux/easy/stephens_log/) |
+| 4 | Windows | [front_porch](windows/easy/front_porch/) |
+| 5 | Windows | [the_parlor](windows/easy/the_parlor/) |
+| 6 | Windows | [servants_quarters](windows/easy/servants_quarters/) |
 
 <details>
 <summary>Show techniques</summary>
@@ -111,12 +111,12 @@ CTF{...}
 
 | # | Platform | Challenge |
 |---|----------|-----------|
-| 1 | Linux | [challenge1_capabilities](linux/medium/challenge1_capabilities/) |
-| 2 | Linux | [challenge2_path_hijack](linux/medium/challenge2_path_hijack/) |
-| 3 | Linux | [challenge3_ld_preload](linux/medium/challenge3_ld_preload/) |
-| 4 | Windows | [challenge1_dll_hijack](windows/medium/challenge1_dll_hijack/) |
-| 5 | Windows | [challenge2_scheduled_task](windows/medium/challenge2_scheduled_task/) |
-| 6 | Windows | [challenge3_registry_autorun](windows/medium/challenge3_registry_autorun/) |
+| 1 | Linux | [the_cellar](linux/medium/the_cellar/) |
+| 2 | Linux | [the_stables](linux/medium/the_stables/) |
+| 3 | Linux | [schultz_library](linux/medium/schultz_library/) |
+| 4 | Windows | [the_workshop](windows/medium/the_workshop/) |
+| 5 | Windows | [the_clocktower](windows/medium/the_clocktower/) |
+| 6 | Windows | [candyland_records](windows/medium/candyland_records/) |
 
 <details>
 <summary>Show techniques</summary>
@@ -138,12 +138,12 @@ CTF{...}
 
 | # | Platform | Challenge |
 |---|----------|-----------|
-| 1 | Linux | [challenge1_wildcard_injection](linux/hard/challenge1_wildcard_injection/) |
-| 2 | Linux | [challenge2_docker_escape](linux/hard/challenge2_docker_escape/) |
-| 3 | Linux | [challenge3_rbash_escape](linux/hard/challenge3_rbash_escape/) |
-| 4 | Windows | [challenge1_seimpersonate](windows/hard/challenge1_seimpersonate/) |
-| 5 | Windows | [challenge2_sam_dump](windows/hard/challenge2_sam_dump/) |
-| 6 | Windows | [challenge3_pass_the_hash](windows/hard/challenge3_pass_the_hash/) |
+| 1 | Linux | [the_archive](linux/hard/the_archive/) |
+| 2 | Linux | [the_cage](linux/hard/the_cage/) |
+| 3 | Linux | [the_chains](linux/hard/the_chains/) |
+| 4 | Windows | [the_impersonator](windows/hard/the_impersonator/) |
+| 5 | Windows | [the_vault](windows/hard/the_vault/) |
+| 6 | Windows | [stephens_shadow](windows/hard/stephens_shadow/) |
 
 <details>
 <summary>Show techniques</summary>
