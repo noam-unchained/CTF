@@ -20,7 +20,7 @@ New-LocalUser -Name "django" -Password $djangoPass `
     -ErrorAction SilentlyContinue
 Add-LocalGroupMember -Group "Users" -Member "django" -ErrorAction SilentlyContinue
 
-# --- The flag — only stephen / Administrators can read ---
+# --- The flag  only stephen / Administrators can read ---
 $flagDir = "C:\CTF\stephen_quarters"
 New-Item -ItemType Directory -Path $flagDir -Force | Out-Null
 Set-Content -Path "$flagDir\orders.txt" -Value "CTF{p4ss_th3_h4sh_n04m_dj4ng0_w1ns}"
@@ -43,7 +43,7 @@ New-Item -ItemType Directory -Path $artifactDir -Force | Out-Null
 Add-Type -AssemblyName System.Security
 $md4 = [System.Security.Cryptography.MD4]::Create() 2>$null
 
-# Leave the briefing — hash will need to be obtained via secretsdump in practice
+# Leave the briefing  hash will need to be obtained via secretsdump in practice
 $briefing = @"
 Candyland Threat Intelligence
 ==============================
@@ -54,10 +54,10 @@ Your target: stephen (local Administrator)
 His secrets are at: C:\CTF\stephen_quarters\orders.txt
 
 Attack path:
-  1. Dump the local SAM (use reg save — you can run cmd as django)
+  1. Dump the local SAM (use reg save  you can run cmd as django)
      OR use Mimikatz if you can get SYSTEM first.
   2. Extract stephen's NTLM hash with secretsdump.py
-  3. Use the hash directly — no password cracking needed.
+  3. Use the hash directly  no password cracking needed.
      Pass-the-Hash with evil-winrm, psexec, or wmiexec.
 
 Remember: NTLM authentication accepts the hash itself.
@@ -67,7 +67,7 @@ Tools:
   secretsdump.py  (impacket)
   evil-winrm
   psexec.py / wmiexec.py  (impacket)
-  Mimikatz (optional — if you escalate first)
+  Mimikatz (optional  if you escalate first)
 "@
 Set-Content -Path "$artifactDir\BRIEFING.txt" -Value $briefing
 icacls $artifactDir /grant "django:F" | Out-Null

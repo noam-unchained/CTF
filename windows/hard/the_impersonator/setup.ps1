@@ -1,5 +1,5 @@
 # ============================================================
-# CTF Setup: SeImpersonatePrivilege — PrintSpoofer / GodPotato
+# CTF Setup: SeImpersonatePrivilege  PrintSpoofer / GodPotato
 # Run as Administrator in a Windows VM
 # ============================================================
 
@@ -55,8 +55,8 @@ Privilege: SeImpersonatePrivilege
 Your mission: escalate to SYSTEM and retrieve broomhilda.txt from C:\CTF\candyland_vault\
 
 Tools you will need (download to this machine):
-  PrintSpoofer64.exe  — https://github.com/itm4n/PrintSpoofer/releases
-  GodPotato.exe       — https://github.com/BeichenDream/GodPotato/releases
+  PrintSpoofer64.exe   https://github.com/itm4n/PrintSpoofer/releases
+  GodPotato.exe        https://github.com/BeichenDream/GodPotato/releases
 
 Both exploit SeImpersonatePrivilege to impersonate the SYSTEM token.
 "@

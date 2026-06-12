@@ -1,4 +1,4 @@
-# Challenge 2 — PATH Hijacking via SUID Binary
+# Challenge 2  PATH Hijacking via SUID Binary
 
 **Difficulty:** Medium
 **Category:** Linux Privilege Escalation
@@ -10,7 +10,7 @@
 
 A developer wrote a small monitoring tool for ops to check service status.
 They gave it the SUID bit so it could run privileged checks without giving ops sudo access.
-The code is compiled — you can't read it directly. But you can observe what it does.
+The code is compiled  you can't read it directly. But you can observe what it does.
 
 You are `player`. The SUID binary is at `/usr/local/bin/monitor`.
 
@@ -80,17 +80,17 @@ export PATH=/tmp/hijack:$PATH
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Inspect the binary
+### Step 1  Inspect the binary
 
 ```bash
 strings /usr/local/bin/monitor
 ```
 
-You'll see: `service apache2 status` — the binary calls `service` without a full path.
+You'll see: `service apache2 status`  the binary calls `service` without a full path.
 
-### Step 2 — Create the malicious binary
+### Step 2  Create the malicious binary
 
 ```bash
 mkdir /tmp/hijack
@@ -101,7 +101,7 @@ chmod +x /tmp/hijack/service
 
 `-p` preserves the effective UID (root) when bash starts.
 
-### Step 3 — Hijack PATH and trigger the binary
+### Step 3  Hijack PATH and trigger the binary
 
 ```bash
 export PATH=/tmp/hijack:$PATH
@@ -111,7 +111,7 @@ export PATH=/tmp/hijack:$PATH
 The SUID binary calls `system("service ...")`, the OS finds `/tmp/hijack/service` first,
 and executes it as root.
 
-### Step 4 — Read the flag
+### Step 4  Read the flag
 
 ```bash
 cat /root/flag.txt
@@ -124,7 +124,7 @@ CTF{p4th_h1j4ck_v14_su1d}
 ### Why this works
 
 `system()` in C uses `/bin/sh -c` under the hood, which inherits the calling process's
-environment — including `PATH`. Because the binary called `setuid(0)` and has SUID set,
+environment  including `PATH`. Because the binary called `setuid(0)` and has SUID set,
 the forked shell runs as root. Any SUID binary that calls external programs without
 absolute paths is vulnerable to this attack. Always use full paths (`/usr/sbin/service`)
 in privileged code, or use `execve()` with a fixed path instead of `system()`.

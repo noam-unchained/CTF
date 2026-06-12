@@ -1,4 +1,4 @@
-# Challenge 2 — Docker Socket Escape
+# Challenge 2  Docker Socket Escape
 
 **Difficulty:** Hard
 **Category:** Linux Privilege Escalation / Container Escape
@@ -8,7 +8,7 @@
 
 ## Story
 
-You are **Django**. You've been locked inside a container — Candie's most secure cell.
+You are **Django**. You've been locked inside a container  Candie's most secure cell.
 No SUID binaries. No misconfigured sudo. No cron jobs.
 
 But Dr. Schultz left you one gift before he died:
@@ -24,7 +24,7 @@ Use the Docker daemon to break out.
 ```bash
 docker build -t ctf-linux-hard-2 .
 
-# The docker socket must be mounted from the host — this is the vulnerability
+# The docker socket must be mounted from the host  this is the vulnerability
 docker run -it --rm \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /host-simulation:/host-simulation \
@@ -39,12 +39,12 @@ docker run -it --rm \
 ## Background: Docker Socket Escape
 
 `/var/run/docker.sock` is the Unix socket the Docker daemon listens on.
-Whoever can write to it can issue Docker API commands — including spawning new containers.
+Whoever can write to it can issue Docker API commands  including spawning new containers.
 
 If you are inside a container that has the Docker socket mounted, you can:
 1. Use the `docker` CLI (or raw API calls) to spin up a **new** privileged container
 2. Mount the **host filesystem** into that new container
-3. Read, write, or execute anything on the host — including chroot into it
+3. Read, write, or execute anything on the host  including chroot into it
 
 This is a full host escape. The container boundary ceases to exist.
 
@@ -94,9 +94,9 @@ cat /host-simulation/flag.txt
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Confirm the socket is available
+### Step 1  Confirm the socket is available
 
 ```bash
 ls -la /var/run/docker.sock
@@ -105,7 +105,7 @@ docker images
 
 The socket is accessible and `django` is in the `docker` group.
 
-### Step 2 — Escape by spawning a privileged container with host filesystem
+### Step 2  Escape by spawning a privileged container with host filesystem
 
 ```bash
 docker run -it --rm \
@@ -116,11 +116,11 @@ docker run -it --rm \
 ```
 
 Breaking this down:
-- `-v /:/mnt/host` — mounts the **host root filesystem** into the new container
-- `--privileged` — removes all container security restrictions
-- `chroot /mnt/host bash` — changes root into the mounted host, giving a native host shell
+- `-v /:/mnt/host`  mounts the **host root filesystem** into the new container
+- `--privileged`  removes all container security restrictions
+- `chroot /mnt/host bash`  changes root into the mounted host, giving a native host shell
 
-### Step 3 — Read the flag
+### Step 3  Read the flag
 
 ```bash
 cat /host-simulation/flag.txt
@@ -130,7 +130,7 @@ cat /host-simulation/flag.txt
 CTF{3sc4p3d_c4ndyl4nd_dj4ng0_1s_fr33}
 ```
 
-### If docker CLI is not available — use the raw API
+### If docker CLI is not available  use the raw API
 
 ```bash
 # Escape using only curl and the socket
@@ -144,7 +144,7 @@ curl -s --unix-socket /var/run/docker.sock \
 
 The Docker socket grants full control over the Docker daemon, which runs as root.
 Any process that can write to the socket effectively has root on the host.
-Mounting `/var/run/docker.sock` into a container — even a "restricted" one —
+Mounting `/var/run/docker.sock` into a container  even a "restricted" one 
 completely defeats container isolation. Never mount the Docker socket unless absolutely
 necessary, and if you must, protect access with authorization plugins (e.g., OPA, Falco).
 

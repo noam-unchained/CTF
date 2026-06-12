@@ -1,4 +1,4 @@
-# Challenge 1 — SUID Binary Abuse
+# Challenge 1  SUID Binary Abuse
 
 **Difficulty:** Easy  
 **Category:** Linux Privilege Escalation  
@@ -33,7 +33,7 @@ You are now `player`. Your goal: read `/root/flag.txt`.
 <details>
 <summary>Hint 1</summary>
 SUID (Set User ID) means a binary runs as its owner, not the person who runs it.
-If a root-owned binary has SUID set, it runs as root — even when you execute it.
+If a root-owned binary has SUID set, it runs as root  even when you execute it.
 </details>
 
 <details>
@@ -49,7 +49,7 @@ Look for something that shouldn't have SUID.
 
 <details>
 <summary>Hint 3</summary>
-Check GTFOBins (https://gtfobins.github.io) — it lists how to exploit common binaries when they have SUID set.
+Check GTFOBins (https://gtfobins.github.io)  it lists how to exploit common binaries when they have SUID set.
 </details>
 
 ---
@@ -57,17 +57,17 @@ Check GTFOBins (https://gtfobins.github.io) — it lists how to exploit common b
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Find SUID binaries
+### Step 1  Find SUID binaries
 
 ```bash
 find / -perm -4000 -type f 2>/dev/null
 ```
 
-You'll spot `/usr/bin/find` in the list — this is unusual.
+You'll spot `/usr/bin/find` in the list  this is unusual.
 
-### Step 2 — Use `find` to execute a command as root
+### Step 2  Use `find` to execute a command as root
 
 `find` supports `-exec`, which runs a command. Because `find` has SUID and is owned by root, that command runs as root:
 

@@ -6,7 +6,7 @@
 Write-Host "[*] Setting up Challenge 2: SAM Database Dump" -ForegroundColor Cyan
 
 # --- Create target account whose hash we want ---
-# Calvin Candie — local admin, his hash is the prize
+# Calvin Candie  local admin, his hash is the prize
 $candiePass = ConvertTo-SecureString "Candie$Plantation1858" -AsPlainText -Force
 New-LocalUser -Name "candie" -Password $candiePass `
     -FullName "Calvin J. Candie" `
@@ -36,7 +36,7 @@ New-LocalUser -Name "django" -Password $djangoPass `
 Add-LocalGroupMember -Group "Users" -Member "django" -ErrorAction SilentlyContinue
 
 # --- Create a shadow copy so the SAM is accessible (simulates backup operator scenario) ---
-# Give django Backup Operator rights — the realistic escalation path
+# Give django Backup Operator rights  the realistic escalation path
 Add-LocalGroupMember -Group "Backup Operators" -Member "django" -ErrorAction SilentlyContinue
 
 # --- Drop mission briefing ---
@@ -49,13 +49,13 @@ Your account: django (Backup Operator)
 Candie keeps the door to Broomhilda locked at C:\CTF\candie_office\broomhilda.txt
 Only Candie or SYSTEM can read it.
 
-Your lead: Backup Operators can read any file — including the SAM and SYSTEM hives.
+Your lead: Backup Operators can read any file  including the SAM and SYSTEM hives.
 Extract Candie's NTLM hash. Crack it or use it directly.
 
 Tools you will need:
-  secretsdump.py  (impacket)  — dump hashes from SAM/SYSTEM hives offline
-  hashcat / john              — crack the NTLM hash
-  evil-winrm / psexec         — authenticate with the cracked password
+  secretsdump.py  (impacket)   dump hashes from SAM/SYSTEM hives offline
+  hashcat / john               crack the NTLM hash
+  evil-winrm / psexec          authenticate with the cracked password
 "@
 New-Item -ItemType Directory -Path "C:\Users\django\Desktop" -Force | Out-Null
 Set-Content -Path "C:\Users\django\Desktop\MISSION.txt" -Value $briefing

@@ -34,7 +34,7 @@ $acl.AddAccessRule($rule)
 Set-Acl "$flagDir\flag.txt" $acl
 
 # --- Register the service with an unquoted path (the vulnerability) ---
-# The path has spaces and NO quotes around it — Windows will try:
+# The path has spaces and NO quotes around it  Windows will try:
 #   C:\Program.exe
 #   C:\Program Files\Vulnerable.exe   <-- player plants their binary here
 #   C:\Program Files\Vulnerable App\bin\service.exe

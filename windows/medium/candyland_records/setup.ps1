@@ -54,5 +54,5 @@ Set-Acl $regPath $regAcl
 
 Write-Host "[+] Done. Registry key: HKLM\...\Run\SysAgent -> $agentDir\agent.exe" -ForegroundColor Green
 Write-Host "[+] The agent directory is writable by ctfplayer." -ForegroundColor Green
-Write-Host "[+] Log in as ctfplayer / Player123! — the autorun fires at next logon." -ForegroundColor Green
+Write-Host "[+] Log in as ctfplayer / Player123!  the autorun fires at next logon." -ForegroundColor Green
 Write-Host "[!] Take a VM snapshot before setup. The autorun will fire on your own logon too." -ForegroundColor Yellow

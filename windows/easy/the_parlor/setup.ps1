@@ -28,4 +28,4 @@ Add-LocalGroupMember -Group "Users" -Member "ctfplayer" -ErrorAction SilentlyCon
 
 Write-Host "[+] Done. AlwaysInstallElevated is now enabled." -ForegroundColor Green
 Write-Host "[+] Log in as ctfplayer / Player123! to start the challenge." -ForegroundColor Green
-Write-Host "[!] Remember to revert this VM snapshot after the challenge — this setting is dangerous!" -ForegroundColor Yellow
+Write-Host "[!] Remember to revert this VM snapshot after the challenge  this setting is dangerous!" -ForegroundColor Yellow

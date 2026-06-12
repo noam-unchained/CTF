@@ -1,5 +1,5 @@
 # ============================================================
-# CTF Setup: Scheduled Task — Writable Binary
+# CTF Setup: Scheduled Task  Writable Binary
 # Run as Administrator in a Windows VM
 # ============================================================
 

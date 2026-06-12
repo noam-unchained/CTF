@@ -7,7 +7,7 @@ themed around Django Unchained. Three difficulty levels, 18 challenges total.
 
 ## Story
 
-You are **Django** — a bounty hunter riding through hostile territory.
+You are **Django** - a bounty hunter riding through hostile territory.
 Broomhilda is locked away in Candyland, guarded by Calvin Candie, his enforcer Stephen,
 and every misconfiguration their sysadmin ever made.
 
@@ -52,13 +52,13 @@ CTF_Challenges/
 ## Prerequisites
 
 ### Linux challenges
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) — works on Mac, Linux, Windows
-- Each challenge folder has a `Dockerfile` — build and run it to get a shell
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) - works on Mac, Linux, Windows
+- Each challenge folder has a `Dockerfile` - build and run it to get a shell
 
 ### Windows challenges
 - A Windows 10 or Windows Server 2019/2022 VM (VMware, VirtualBox, UTM, Parallels)
-- Each challenge has a `setup.ps1` — run as Administrator to configure the environment
-- **Always take a VM snapshot before running setup — revert after each challenge**
+- Each challenge has a `setup.ps1` - run as Administrator to configure the environment
+- **Always take a VM snapshot before running setup - revert after each challenge**
 
 ---
 
@@ -67,7 +67,7 @@ CTF_Challenges/
 1. Read `instructions.md` in each challenge folder
 2. Set up the environment (Docker or VM)
 3. Try to escalate privileges and capture the flag
-4. Hints are in collapsible sections inside each challenge — use them if stuck
+4. Hints are in collapsible sections inside each challenge - use them if stuck
 5. Full solution with explanation is at the bottom of each file
 
 ---

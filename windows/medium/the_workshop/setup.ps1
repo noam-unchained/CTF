@@ -31,7 +31,7 @@ MonitoringTool v2.3.1
 This tool loads the following DLLs at startup:
   - C:\Windows\System32\kernel32.dll  (system)
   - C:\Windows\System32\user32.dll    (system)
-  - helper.dll                        (local — must be in application directory)
+  - helper.dll                        (local  must be in application directory)
 
 If helper.dll is not found in the application directory, the tool will search
 standard system paths. Place the DLL in $appDir to override.
