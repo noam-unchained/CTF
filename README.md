@@ -51,8 +51,12 @@ CTF_Challenges/
 
 ## Prerequisites
 
+**New to Docker?** Read the [Setup Guide](SETUP.md) first - it walks through
+installing Docker on Mac, Windows, and Linux, checking that it works, and what
+the build/run commands actually do.
+
 ### Linux challenges
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) - works on Mac, Linux, Windows
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) - works on Mac, Linux, Windows (see the [Setup Guide](SETUP.md) for step-by-step install)
 - Each challenge folder has a `Dockerfile` - build and run it to get a shell
 
 ### Windows challenges
