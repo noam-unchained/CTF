@@ -1,7 +1,7 @@
 # Challenge 3  LD_PRELOAD Injection via Sudo
 
-**Difficulty:** Medium
-**Category:** Linux Privilege Escalation
+**Difficulty:** Medium  
+**Category:** Linux Privilege Escalation  
 **Flag:** `/root/flag.txt`
 
 ---

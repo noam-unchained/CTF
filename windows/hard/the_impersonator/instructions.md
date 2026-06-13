@@ -1,7 +1,7 @@
 # Challenge 1  SeImpersonatePrivilege (PrintSpoofer / GodPotato)
 
-**Difficulty:** Hard
-**Category:** Windows Privilege Escalation  Token Impersonation
+**Difficulty:** Hard  
+**Category:** Windows Privilege Escalation  Token Impersonation  
 **Flag:** `C:\CTF\candyland_vault\broomhilda.txt`
 
 ---

@@ -1,7 +1,7 @@
 # Challenge 2  Scheduled Task with Writable Binary
 
-**Difficulty:** Medium
-**Category:** Windows Privilege Escalation
+**Difficulty:** Medium  
+**Category:** Windows Privilege Escalation  
 **Flag:** `C:\CTF\challenge_task\flag.txt`
 
 ---

@@ -1,7 +1,7 @@
 # Challenge 2  SAM Database Dump via Backup Operator
 
-**Difficulty:** Hard
-**Category:** Windows Privilege Escalation  Credential Extraction
+**Difficulty:** Hard  
+**Category:** Windows Privilege Escalation  Credential Extraction  
 **Flag:** `C:\CTF\candie_office\broomhilda.txt`
 
 ---

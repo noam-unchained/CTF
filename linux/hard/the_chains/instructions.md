@@ -1,7 +1,7 @@
 # Challenge 3  Restricted Shell Escape + Sudo
 
-**Difficulty:** Hard
-**Category:** Linux Privilege Escalation / Shell Escape
+**Difficulty:** Hard  
+**Category:** Linux Privilege Escalation / Shell Escape  
 **Flag:** `/root/flag.txt`
 
 ---

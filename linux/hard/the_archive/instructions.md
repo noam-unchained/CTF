@@ -1,7 +1,7 @@
 # Challenge 1  Wildcard Injection
 
-**Difficulty:** Hard
-**Category:** Linux Privilege Escalation
+**Difficulty:** Hard  
+**Category:** Linux Privilege Escalation  
 **Flag:** `/home/candie/vault/broomhilda.txt`
 
 ---

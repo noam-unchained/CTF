@@ -1,7 +1,7 @@
 # Challenge 2  PATH Hijacking via SUID Binary
 
-**Difficulty:** Medium
-**Category:** Linux Privilege Escalation
+**Difficulty:** Medium  
+**Category:** Linux Privilege Escalation  
 **Flag:** `/root/flag.txt`
 
 ---

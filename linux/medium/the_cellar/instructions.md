@@ -1,7 +1,7 @@
 # Challenge 1  Linux Capabilities Abuse
 
-**Difficulty:** Medium
-**Category:** Linux Privilege Escalation
+**Difficulty:** Medium  
+**Category:** Linux Privilege Escalation  
 **Flag:** `/root/flag.txt`
 
 ---

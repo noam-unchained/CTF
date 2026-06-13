@@ -1,7 +1,7 @@
 # Challenge 2  Docker Socket Escape
 
-**Difficulty:** Hard
-**Category:** Linux Privilege Escalation / Container Escape
+**Difficulty:** Hard  
+**Category:** Linux Privilege Escalation / Container Escape  
 **Flag:** on the host at `/host-simulation/flag.txt`
 
 ---

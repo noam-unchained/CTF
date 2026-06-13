@@ -1,7 +1,7 @@
 # Challenge 3  Registry Autorun Hijack
 
-**Difficulty:** Medium
-**Category:** Windows Privilege Escalation
+**Difficulty:** Medium  
+**Category:** Windows Privilege Escalation  
 **Flag:** `C:\CTF\challenge_reg\flag.txt`
 
 ---

@@ -1,7 +1,7 @@
 # Challenge 1  DLL Hijacking
 
-**Difficulty:** Medium
-**Category:** Windows Privilege Escalation
+**Difficulty:** Medium  
+**Category:** Windows Privilege Escalation  
 **Flag:** `C:\CTF\challenge_dll\flag.txt`
 
 ---

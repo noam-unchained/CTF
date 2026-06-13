@@ -1,7 +1,7 @@
 # Challenge 3  Pass-the-Hash
 
-**Difficulty:** Hard
-**Category:** Windows Credential Abuse / Lateral Movement
+**Difficulty:** Hard  
+**Category:** Windows Credential Abuse / Lateral Movement  
 **Flag:** `C:\CTF\stephen_quarters\orders.txt`
 
 ---
