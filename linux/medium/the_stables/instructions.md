@@ -8,11 +8,15 @@
 
 ## Story
 
-A developer wrote a small monitoring tool for ops to check service status.
-They gave it the SUID bit so it could run privileged checks without giving ops sudo access.
-The code is compiled  you can't read it directly. But you can observe what it does.
+Candie's overseers built a monitoring tool to check on operations across the stables.
+They gave it the SUID bit so it could run privileged checks without handing out sudo.
+The code is compiled — you can't read it directly. But you can observe what it does.
+
+The problem: it calls another program by name alone, without specifying where to find it.
+On this system, you control the path. That's all you need.
 
 You are `player`. The SUID binary is at `/usr/local/bin/monitor`.
+Calvin's private papers are in `/root/flag.txt`.
 
 ---
 

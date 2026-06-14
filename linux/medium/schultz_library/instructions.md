@@ -8,11 +8,15 @@
 
 ## Story
 
-The sysadmin allowed you to restart the web server as root via sudo.
-They also left one dangerous line in the sudoers config.
-One compiled shared library is all you need.
+Dr. King Schultz kept a hidden study full of bounty papers, records, and the trail
+that leads to Broomhilda. After Schultz was killed by Candie, his men took over the
+library and set up a web server to manage their records.
 
-You are `player`.
+They gave you permission to restart the web server as root. What they forgot is what
+that actually means when one dangerous line remains in the sudoers config — and the
+environment isn't cleaned up before the privileged process runs.
+
+You are `player`. Check your sudo rights. Candie's papers are in `/root/flag.txt`.
 
 ---
 

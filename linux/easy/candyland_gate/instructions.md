@@ -8,9 +8,13 @@
 
 ## Story
 
-You've landed a shell as a low-privileged user on a Linux server.
-The sysadmin was lazy. They gave certain binaries extra permissions they shouldn't have.
-Find the misconfigured binary and use it to read the root flag.
+You and Dr. King Schultz have ridden through the night to reach Candie's plantation.
+The gate overseer stepped away. You slip through and find yourself at a terminal
+inside the gatehouse — logged in as a low-privileged worker.
+
+Candie's private papers are locked away in the master's quarters (`/root/flag.txt`).
+Somewhere on this system, a binary was given more power than it should have.
+Find it. The gate is open — the rest is up to you.
 
 ---
 

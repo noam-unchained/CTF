@@ -8,9 +8,12 @@
 
 ## Story
 
-You have a shell as `player` on a Linux box.
-You notice you can run *something* as root via `sudo`.
-The sysadmin thought it was harmless. It wasn't.
+You've made it inside Candie Manor. Stephen, the head house slave, manages
+everything — including the system. He set up `sudo` access for one program,
+thinking it was harmless. Something to help Candie review documents, perhaps.
+
+Calvin's private ledger sits in `/root/flag.txt`. Stephen is gone for the evening.
+Check what he left running and figure out how an editor becomes a root shell.
 
 ---
 

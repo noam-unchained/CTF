@@ -8,8 +8,13 @@
 
 ## Story
 
-You're on a Linux server. There's a scheduled maintenance task running as root.
-Look around  maybe the sysadmin didn't lock down the files it depends on.
+Stephen runs Candie Manor like clockwork. Every night — every minute, in fact —
+an automated task fires as root, updating the plantation's inventory records.
+
+Stephen is meticulous about the schedule. Less meticulous about file permissions.
+The script that task calls? Anyone can write to it.
+
+There's a `note.txt` in your home directory. Candie's papers are in `/root/flag.txt`.
 
 ---
 
@@ -20,7 +25,7 @@ docker build -t ctf-linux-easy-3 .
 docker run -it --rm ctf-linux-easy-3
 ```
 
-There's a `README.txt` in your home directory with a clue.
+There's a `note.txt` in your home directory with a clue.
 
 ---
 

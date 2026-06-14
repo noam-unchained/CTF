@@ -8,11 +8,14 @@
 
 ## Story
 
-A developer needed Python to perform some low-level system operations.
-Rather than running the whole script as root, they decided to use Linux capabilities 
-a more "granular" approach. Or so they thought.
+Beneath Candie Manor, the overseers keep records of the Mandingo fighters trained
+on the plantation. To manage access lists without handing out full root, they gave
+the record-keeping tool a "granular" special privilege — Linux capabilities.
 
-You have a shell as `player`. Find what they misconfigured.
+Limited power. That's what they thought.
+
+You have a shell in the cellar. Find which tool was granted that capability, understand
+what it actually lets you do, and use it to reach `/root/flag.txt`.
 
 ---
 
