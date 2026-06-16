@@ -1,1 +1,5 @@
 .claude/
+
+# Never push anything marked not_public
+*not_public/
+*_not_public*
