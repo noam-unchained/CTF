@@ -1,0 +1,29 @@
+============================================================
+  RAID ON CANDYLAND  -  Mission Brief
+============================================================
+
+You are DJANGO. Dr. Schultz dropped you on this Linux box, camped
+just inside Candyland's network. Somewhere in that estate, Calvin
+Candie (the DOMAIN ADMIN) keeps Broomhilda locked in the vault.
+
+  Domain    : CANDYLAND.LOCAL
+  Your box  : foothold  (172.28.10.100)  <- you are here
+  The house : dc.candyland.local  (172.28.10.10)  - the Domain Controller
+  Stables   : stables.candyland.local (172.28.10.20) - a file store
+  Portal    : http://web.candyland.local (172.28.10.30)
+
+Schultz forged you a set of guest papers - a low-privileged domain
+account you can use to get your bearings:
+
+  Username : d.jango
+  Password : Freedom1858!
+  (this is a normal user - it will NOT open the vault by itself)
+
+GOAL: escalate from these guest papers to DOMAIN ADMIN and read
+      the flag in  \\dc\vault\broomhilda.txt
+
+You have internet from this box - use wget/curl to pull any extra
+tools you want. A starter toolkit is already installed (see tools.md).
+
+The estate's sysadmin cut a lot of corners. Find them.
+============================================================

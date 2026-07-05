@@ -1,0 +1,20 @@
+CANDYLAND PLANTATION - STAFF ROSTER (stable copy)
+=================================================
+If you need to reach someone, use their estate account (first-initial.surname).
+
+  Calvin Candie        - calvin.candie   - Master of the house
+  Stephen Warren       - stephen         - Head house servant
+  Lara Lee Candie      - l.candie        - Family
+  Butch Pooch          - b.pooch         - Security
+  Billy Crash          - b.crash         - Security
+  Ace Stonesipher      - m.stonesipher   - Trackers
+  Roger "Lil Raj"      - lil.raj         - Valet
+  Cora                 - cora            - House
+  Sheba                - sheba           - House
+  Broomhilda von Shaft - b.hildy         - House
+  King Schultz         - k.schultz       - Visiting dentist (guest)
+
+Service accounts (do not disable): svc_sql, svc_web, svc_backup
+
+NOTE: Butch keeps forgetting his password and asked us to turn off that
+"Kerberos pre-authentication" nonsense so his script stops failing. Done.

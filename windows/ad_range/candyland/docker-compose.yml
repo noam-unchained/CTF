@@ -1,0 +1,76 @@
+# ============================================================
+#  Raid on Candyland  Windows Active Directory attack range
+#  Theme: Django Unchained   Domain: CANDYLAND.LOCAL
+#
+#  Hosts:
+#    dc        172.28.10.10  - Samba AD DC (DNS/Kerberos/LDAP/SMB + loot shares)
+#    stables   172.28.10.20  - standalone Samba, anonymous share (recon)
+#    web       172.28.10.30  - "Candyland Records" web portal (recon)
+#    foothold  172.28.10.100 - the box YOU ssh into (tools + internet)
+#
+#  Bring up:   docker compose up -d --build
+#  Get in:     ssh django@localhost -p 2222      (password: freedom)
+#  Tear down:  docker compose down -v
+# ============================================================
+
+name: candyland
+
+networks:
+  plantation:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.10.0/24
+
+services:
+  dc:
+    build: ./dc
+    container_name: candyland-dc
+    hostname: dc
+    privileged: true            # Samba AD DC needs extended caps for provisioning
+    networks:
+      plantation:
+        ipv4_address: 172.28.10.10
+    dns:
+      - 127.0.0.1
+    extra_hosts:
+      - "dc.candyland.local:172.28.10.10"
+    volumes:
+      - dc-data:/var/lib/samba
+    restart: unless-stopped
+
+  stables:
+    build: ./stables
+    container_name: candyland-stables
+    hostname: stables
+    networks:
+      plantation:
+        ipv4_address: 172.28.10.20
+    restart: unless-stopped
+
+  web:
+    build: ./web
+    container_name: candyland-web
+    hostname: web
+    networks:
+      plantation:
+        ipv4_address: 172.28.10.30
+    restart: unless-stopped
+
+  foothold:
+    build: ./foothold
+    container_name: candyland-foothold
+    hostname: foothold
+    networks:
+      plantation:
+        ipv4_address: 172.28.10.100
+    dns:
+      - 172.28.10.10            # resolve *.candyland.local via the DC
+    ports:
+      - "2222:22"               # ssh django@localhost -p 2222
+    depends_on:
+      - dc
+    restart: unless-stopped
+
+volumes:
+  dc-data:
